@@ -49,7 +49,7 @@ const Navbar = () => {
                                 to={item.link}
                                 smooth={true}
                                 duration={500}
-                                offset={-80} // Adjust offset for fixed navbar height
+                                offset={-80}
                                 className="cursor-pointer text-base font-lg text-white hover:text-gray-400"
                             >
                                 {item.name}
@@ -82,18 +82,30 @@ const Navbar = () => {
             {menuOpen && (
                 <div className="bg-black bg-opacity-90 px-6 pb-6 backdrop-blur-sm md:hidden">
                     <div className="mt-4 flex flex-col space-y-4">
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                to={item.link}
-                                className="text-lg text-white transition-colors duration-200 hover:text-gray-400"
-                                onClick={() => setMenuOpen(false)}
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
+                        {navItems.map((item) =>
+                            item.isScroll ? (
+                                <ScrollLink
+                                    key={item.name}
+                                    to={item.link}
+                                    smooth={true}
+                                    duration={500}
+                                    offset={-80}
+                                    className="cursor-pointer text-base font-lg text-white hover:text-gray-400"
+                                >
+                                    {item.name}
+                                </ScrollLink>
+                            ) : (
+                                <RouterLink
+                                    key={item.name}
+                                    to={item.link}
+                                    className="text-base font-lg text-white hover:text-gray-400"
+                                >
+                                    {item.name}
+                                </RouterLink>
+                            )
+                        )}
                         <button className="mt-4 rounded-full border border-white px-6 py-2 text-sm text-white transition-all duration-300 hover:bg-white hover:text-black">
-                            <Link to="/contact">Get in touch</Link>
+                            <RouterLink to="/contact">Get in touch</RouterLink>
                         </button>
                     </div>
                 </div>
