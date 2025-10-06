@@ -33,7 +33,6 @@ const Navbar = () => {
             }}
             animate={hidden ? "hidden" : "visible"}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            // 3. CHANGED className to always have a visible background
             className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 backdrop-blur-sm transition-colors duration-300"
         >
             <div className="container mx-auto flex h-20 items-center justify-between px-6 py-4 md:mt-4 md:px-28">
@@ -91,6 +90,7 @@ const Navbar = () => {
                                     duration={500}
                                     offset={-80}
                                     className="cursor-pointer text-base font-lg text-white hover:text-gray-400"
+                                    onClick={() => setMenuOpen(false)} 
                                 >
                                     {item.name}
                                 </ScrollLink>
@@ -99,13 +99,19 @@ const Navbar = () => {
                                     key={item.name}
                                     to={item.link}
                                     className="text-base font-lg text-white hover:text-gray-400"
+                                    onClick={() => setMenuOpen(false)} 
                                 >
                                     {item.name}
                                 </RouterLink>
                             )
                         )}
                         <button className="mt-4 rounded-full border border-white px-6 py-2 text-sm text-white transition-all duration-300 hover:bg-white hover:text-black">
-                            <RouterLink to="/contact">Get in touch</RouterLink>
+                            <RouterLink
+                                to="/contact"
+                                onClick={() => setMenuOpen(false)} 
+                            >
+                                Get in touch
+                            </RouterLink>
                         </button>
                     </div>
                 </div>
