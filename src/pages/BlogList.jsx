@@ -75,7 +75,7 @@ const BlogList = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-52">
       <header className="flex justify-between items-center border-b border-gray-200 pb-6 mb-8">
-        <h1 className="text-5xl font-bold tracking-tighter">The Blogs</h1>
+        <h1 className="text-4xl font-bold tracking-tighter">The Blogs</h1>
         <button onClick={() => setIsLoginModalOpen(true)} className="py-2 px-5 border border-black rounded-md font-semibold hover:bg-black hover:text-white transition-colors">
           Admin Login
         </button>
