@@ -27,9 +27,8 @@ const AdminDashboard = () => {
     }, []);
 
     const handleLogout = async () => {
-        await axios.post(`https://clonesaw-server.onrender.com/admin/logout`, {}, { withCredentials: true });
-        localStorage.removeItem('token');
-        navigate('/blogs');
+        await axios.post("https://clonesaw-server.onrender.com/admin/logout", {}, { withCredentials: true });
+        navigate("/blogs");
     };
 
     const handleOpenCreateModal = () => {
