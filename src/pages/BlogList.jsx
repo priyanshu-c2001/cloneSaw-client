@@ -13,12 +13,9 @@ const LoginForm = ({ onLoginSuccess, onCancel }) => {
     e.preventDefault();
     setError('');
     try {
-      await axios.post(
-        "https://clonesaw-server.onrender.com/admin/login",
-        { emailId, password },
-        { withCredentials: true }
-      );
-      onLoginSuccess(); 
+      const response = await axios.post(`https://clonesaw-server.onrender.com/admin/login`, { emailId, password }, { withCredentials: true });
+      localStorage.setItem('token', response.data.token);
+      onLoginSuccess();
     } catch (err) {
       setError('Invalid credentials. Please try again.');
     }
@@ -29,13 +26,13 @@ const LoginForm = ({ onLoginSuccess, onCancel }) => {
       <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
       <div>
         <label htmlFor="emailId" className="block text-sm font-semibold text-gray-700">Email</label>
-        <input type="text" id="emailId" value={emailId} onChange={(e) => setEmailId(e.target.value)} required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black" />
+        <input type="text" id="emailId" value={emailId} onChange={(e) => setEmailId(e.target.value)} required 
+               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black"/>
       </div>
       <div>
         <label htmlFor="password" className="block text-sm font-semibold text-gray-700">Password</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black" />
+        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required 
+               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black"/>
       </div>
       {error && <p className="text-red-600 text-sm">{error}</p>}
       <div className="flex items-center gap-4">
