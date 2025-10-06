@@ -37,7 +37,7 @@ const Navbar = () => {
         >
             <div className="container mx-auto flex h-20 items-center justify-between px-6 py-4 md:mt-4 md:px-28">
                 <div className="cursor-pointer text-2xl font-bold tracking-widest text-white">
-                    <RouterLink to="/">CLONESAW</RouterLink>
+                    <RouterLink to="/" onClick={() => setMenuOpen(false)}>CLONESAW</RouterLink>
                 </div>
 
                 <div className="hidden items-center space-x-14 md:flex">
